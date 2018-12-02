@@ -106,10 +106,11 @@ describe('ContactEditComponent tests', () => {
        }));
 
         it('should not update the contact if email is invalid', fakeAsync(() => {
+            const invalidEmail = 'london@NoDomain';
             const newContact = {
                 id: 1,
                 name: 'london',
-                email: 'london@example',
+                email: invalidEmail,
                 number: '1234567890'
             };
             component.isLoading = false;
@@ -124,12 +125,13 @@ describe('ContactEditComponent tests', () => {
         }));
 
 
-        it('should not update the contact if email is invalid', fakeAsync(() => {
+        it('should not update the contact if phone is invalid', fakeAsync(() => {
+            const tooManyDigits = '12345678901';
             const newContact = {
                 id: 1,
                 name: 'london',
                 email: 'london@example.com',
-                number: '12345678901'
+                number: tooManyDigits
             };
             component.isLoading = false;
             fixture.detectChanges();
