@@ -67,11 +67,22 @@ describe('ContactEditComponent tests', () => {
                 name: 'lorace'
             };
             component.isLoading = false;
-            component.saveContact(contact);
+            component.saveContact(contact); /*This is what we are testing...finally????*/
             fixture.detectChanges();
             const nameInput = rootElement.query(By.css('.contact-name'));
             tick();
             expect(nameInput.nativeElement.value).toBe('lorace');
+        }));
+    });
+
+    describe('loadContact() test', () => {
+        it('should load contact', fakeAsync(() => {
+            component.isLoading = false;
+            component.loadContact();
+            fixture.detectChanges();
+            const nameInput = rootElement.query(By.css('.contact-name'));
+            tick();
+            expect(nameInput.nativeElement.value).toBe('janet');
         }));
     });
 
