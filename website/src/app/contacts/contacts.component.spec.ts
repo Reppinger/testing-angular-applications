@@ -11,4 +11,18 @@ describe('ContactsComponent Tests', () => {
     it('should set instance correctly', () => {
         expect(contactsComponent).not.toBeNull();
     });
+
+    it('should have no contacts if there is no data', () =>{
+        expect(contactsComponent.contacts.length).toBe(0);
+    });
+
+    it('should have contacts if there is data', () =>{
+        const newContact: Contact = {
+            id: 1,
+            name: 'Jason Pipemaker'
+        };
+        const contactsList: Array<Contact> = [newContact];
+        contactsComponent.contacts = contactsList;
+        expect(contactsComponent.contacts.length).toBe(1);
+    });
 });
